@@ -1,1 +1,1 @@
-`nodemon -q --exec go run fileName.go --signal SIGTERM`
+`nodemon -q --exec go run app.go --signal SIGTERM`
