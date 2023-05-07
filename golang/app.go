@@ -3,21 +3,30 @@ package main
 import (
 	"fmt"
 	"reflect"
+	"strings"
+
+	"golang.dojo/utility"
 )
 
 func main() {
-	// fmt.Println(Hello());
+	fmt.Print("\033[H\033[2J")
+	fmt.Println(strings.Repeat("=", 20))
+	fmt.Println("GO CLI APP")
+	fmt.Println(strings.Repeat("=", 20))
+  	
 	demoVariablesAndDataTypes()
 }
 
 func demoVariablesAndDataTypes() {
-	/* 
-		Simple Data Types (only 4)
+
+	utility.PrintTitle("Strings")
+	utility.PrintNotes(`
+	Simple Data Types (only 4)
 		- Strings
 		- Numbers
 		- Booleans
-		- Errors
-	*/
+		- Errors	
+	`)
 
 	// Strings
 	//  
