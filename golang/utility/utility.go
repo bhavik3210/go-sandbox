@@ -7,7 +7,7 @@ import (
 	"github.com/fatih/color"
 )
 
-func PrintHeader(header string){
+func PrintHeader(header string) {
 	fmt.Print("\033[H\033[2J")
 	fmt.Println(strings.Repeat("=", 20))
 	fmt.Println(header)
@@ -15,11 +15,11 @@ func PrintHeader(header string){
 }
 
 func PrintTitle(title string) {
- 	boldType := color.New(color.BgYellow, color.FgBlack, color.Bold)
-
-	color.Yellow(strings.Repeat("-", 20))
+	boldType := color.New(color.BgYellow, color.FgBlack, color.Bold)
+	fmt.Println()
+	// color.Yellow(strings.Repeat("-", 20))
 	boldType.Println(title)
-	color.Yellow(strings.Repeat("-", 20))
+	// color.Yellow(strings.Repeat("-", 20))
 }
 
 func PrintSubtitle(subtitle string) {
@@ -28,4 +28,12 @@ func PrintSubtitle(subtitle string) {
 
 func PrintNotes(notes string) {
 	color.HiCyan(notes)
+}
+
+func AddSeparator() {
+	fmt.Println()
+}
+
+func ShowOutput(output string) {
+	color.White(output)
 }
