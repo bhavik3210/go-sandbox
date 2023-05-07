@@ -3,16 +3,13 @@ package main
 import (
 	"fmt"
 	"reflect"
-	"strings"
 
 	"golang.dojo/utility"
 )
 
 func main() {
 	fmt.Print("\033[H\033[2J")
-	fmt.Println(strings.Repeat("=", 20))
-	fmt.Println("GO CLI APP")
-	fmt.Println(strings.Repeat("=", 20))
+	utility.PrintHeader("GO CLI APP")
   	
 	demoVariablesAndDataTypes()
 }
