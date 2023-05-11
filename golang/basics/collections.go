@@ -9,8 +9,8 @@ import (
 func DemosForCollectionsInGoLang() {
 	fmt.Print("\033[H\033[2J")
 	PrintHeader("Collections")
-	demoArray()
-	demoSlices()
+	// demoArray()
+	// demoSlices()
 	demoMaps()
 }
 
@@ -103,4 +103,36 @@ func demoSlices() {
 
 func demoMaps() {
 	PrintTitle("MAPS")
+	var orgMap map[string][]string
+	fmt.Println(orgMap)
+
+	orgMap = map[string][]string{
+		"coffee": {"Coffee", "Espresso", "Cappppuccino"},
+		"tea":    {"HotTea", "ChaiTea", "ChaiLatte"},
+	}
+
+	fmt.Println(orgMap)
+
+	fmt.Println(orgMap["coffee"])
+
+	AddSeparator()
+	orgMap["other"] = []string{"HotCoco"}
+	fmt.Println(orgMap)
+
+	delete(orgMap, "tea")
+	fmt.Println(orgMap)
+	AddSeparator()
+
+	fmt.Println(orgMap["tea"])
+	v, ok := orgMap["tea"]
+	fmt.Println(v, ok)
+	AddSeparator()
+
+	copiedMap := orgMap
+	copiedMap["coffee"] = []string{"Coffee"}
+	orgMap["tea"] = []string{"HotTea"}
+
+	fmt.Println(orgMap)
+	fmt.Println(copiedMap)
+	PrintNotes(` Maps are copied by reference, so if you apply changes to one the copy will also have that change since they are essentially poiting to the same mem address`)
 }

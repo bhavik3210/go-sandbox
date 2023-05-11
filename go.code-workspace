@@ -6,5 +6,25 @@
     {
       "path": "dojo"
     }
-  ]
+  ],
+  "settings": {
+    "workbench.colorCustomizations": {
+      "titleBar.activeForeground": "#ffffff",
+      "titleBar.inactiveForeground": "#ffffff",
+      "titleBar.activeBackground": "#007d9c",
+      "titleBar.inactiveBackground": "#007d9c"
+    },
+    "macros": {
+      "rungo": [
+        "workbench.action.terminal.focus",
+        {
+            "command": "workbench.action.terminal.sendSequence", 
+            "args": { 
+              "text": "gostack && cd golang && nodemon -q --exec go run . -e go --signal SIGTERM \n" 
+            }
+        },
+        "workbench.action.focusActiveEditorGroup",
+      ]
+    }   
+  }
 }
