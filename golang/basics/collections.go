@@ -11,7 +11,8 @@ func DemosForCollectionsInGoLang() {
 	PrintHeader("Collections")
 	// demoArray()
 	// demoSlices()
-	demoMaps()
+	// demoMaps()
+	demoStructs()
 }
 
 func demoArray() {
@@ -135,4 +136,20 @@ func demoMaps() {
 	fmt.Println(orgMap)
 	fmt.Println(copiedMap)
 	PrintNotes(` Maps are copied by reference, so if you apply changes to one the copy will also have that change since they are essentially poiting to the same mem address`)
+}
+
+func demoStructs() {
+	PrintTitle("STRUCTS")
+	PrintNotes("Copied By Value")
+	AddSeparator()
+	type menuItem struct {
+		name   string
+		prices map[string]float64
+	}
+
+	menu := []menuItem{
+		{name: "Coffee", prices: map[string]float64{"small": 1.54, "medium": 2.12, "large": 3.30}},
+		{name: "Tea", prices: map[string]float64{"small": 1.54, "medium": 2.12, "large": 3.30}},
+	}
+	fmt.Println(menu)
 }
