@@ -20,5 +20,10 @@
         "workbench.action.focusActiveEditorGroup",
       ]
     }   
+  },
+  "extensions": {
+    "recommendations": [
+      "golang.go"
+    ]
   }
 }
