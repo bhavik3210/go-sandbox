@@ -2,9 +2,6 @@
   "folders": [
     {
       "path": "golang"
-    },
-    {
-      "path": "dojo"
     }
   ],
   "settings": {
@@ -12,18 +9,13 @@
       "rungo": [
         "workbench.action.terminal.focus",
         {
-            "command": "workbench.action.terminal.sendSequence", 
-            "args": { 
-              "text": "gostack && cd golang && nodemon -q --exec go run . -e go --signal SIGTERM \n" 
-            }
+          "command": "workbench.action.terminal.sendSequence",
+          "args": {
+            "text": "gostack && cd golang && nodemon -q --exec go run . -e go --signal SIGTERM \n"
+          }
         },
-        "workbench.action.focusActiveEditorGroup",
+        "workbench.action.focusActiveEditorGroup"
       ]
-    }   
+    },
   },
-  "extensions": {
-    "recommendations": [
-      "golang.go"
-    ]
-  }
 }
