@@ -2,6 +2,9 @@
   "folders": [
     {
       "path": "golang"
+    },
+    {
+      "path": "../gists/95f0e39d6693c53d2fffb5cca8885f1e"
     }
   ],
   "settings": {
