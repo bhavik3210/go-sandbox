@@ -5,7 +5,10 @@ import "fmt"
 func DemoBranching() {
 	PrintHeader("BRANCHING")
 	// demoIfStatement()
-	demoSwitchStatement()
+	// demoSwitchStatement()
+	// demoDeferredFunctions()
+	// demoPanicAndRecover()
+	demoGoToFunctions()
 }
 
 func demoIfStatement() {
@@ -78,10 +81,51 @@ func demoSwitchStatement() {
 	}
 }
 
-func deferredFunctions() {
+func demoDeferredFunctions() {
+	PrintTitle("DEFFERED FUNCTIONS")
+	fmt.Println("Main 1")
+	defer fmt.Println("Defer 1")
+	fmt.Println("Main 2")
+	defer fmt.Println("Defer 2")
+	PrintNotes(` Defered calls as are in a stack, last one in first one out
+	This is very useful for Datbase operations, opening and closeing DB connections`)
+
+	// db, _ := sql.Open("driverName", "connection string")
+	// defer db.close()
+	// rows, _ := db.Query("some sql query here")
+	// defer rows.clsoe()
+	// here rows will close before db will because that would be the correct order
+}
+
+func demoPanicAndRecover() {
+	PrintTitle("PANIC AND RECOVER")
+	fmt.Println("Main 1")
+	func1()
+	fmt.Println("Main 2")
 
 }
 
-func demoGoToFunctions() {
+func func1() {
+	defer func() {
+		fmt.Println(recover())
+	}()
+	fmt.Println("func1 A")
+	panic("Oops!")
+	fmt.Println("func1 B")
+}
 
+func demoGoToFunctions() {
+	PrintTitle("GO TO STATEMENTS")
+	i := 10
+	if i < 15 {
+		goto myLabel
+		fmt.Println("After goto statement, unreachable")
+	}
+
+myLabel:
+	j := 32
+	for ; i < 15; i++ {
+		j--
+	}
+	fmt.Println(j)
 }
