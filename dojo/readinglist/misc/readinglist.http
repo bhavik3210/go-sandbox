@@ -1,0 +1,25 @@
+GET http://localhost:4000/v1/healthcheck
+
+###
+
+POST http://localhost:4000/v1/healthcheck
+
+###
+
+GET http://localhost:4000/v1/books
+
+###
+
+POST http://localhost:4000/v1/books
+
+###
+
+GET http://localhost:4000/v1/books/23
+
+###
+
+PUT http://localhost:4000/v1/books/23
+
+###
+
+DELETE http://localhost:4000/v1/books/23
