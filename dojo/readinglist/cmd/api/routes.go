@@ -2,7 +2,8 @@ package main
 
 import "net/http"
 
-func (app *application) route() *http.ServeMux {
+// this method is like extension functions in Kotlin, btw there is no special keyword to refrence reciever like app here
+func (app *application) routeHandler() *http.ServeMux {
 
 	// create a new server
 	mux := http.NewServeMux()
