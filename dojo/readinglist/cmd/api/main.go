@@ -3,12 +3,15 @@
 package main
 
 import (
+	"database/sql"
 	"flag"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
 	"time"
+
+	_ "github.com/lib/pq"
 )
 
 const version = "1.0.0"
@@ -16,6 +19,7 @@ const version = "1.0.0"
 type config struct {
 	port int
 	env  string
+	dsn  string //data name service
 }
 
 // application struct will have member methods that are being declared and attached (this is go's way of oop instead of having dedicated classes file and throwing it all there)
@@ -47,6 +51,7 @@ func main() {
 	var config config
 	flag.IntVar(&config.port, "port", 4000, "API Server Port")
 	flag.StringVar(&config.env, "env", "dev", "Environment (dev|stage|prod)")
+	flag.StringVar(&config.dsn, "db-dsn", os.Getenv("READINGLIST_DB_DSN"), "PostgreSQL DSN")
 	flag.Parse()
 
 	// logger
@@ -62,6 +67,21 @@ func main() {
 
 	//	app is an object dereference by * with the mem address provided to it via &app
 	//	fmt.Println(*app)
+
+	//open Db connection
+	db, err := sql.Open("postgres", config.dsn)
+	if err != nil {
+		logger.Fatal(err)
+	}
+
+	defer db.Close()
+
+	err = db.Ping()
+	if err != nil {
+		logger.Fatal(err)
+	}
+
+	logger.Printf("database connection pool established")
 
 	// Assigning designated port from config object :PORT_NUM format
 	address := fmt.Sprintf(":%d", config.port)
@@ -79,7 +99,7 @@ func main() {
 	logger.Printf("starting %s server on %s", config.env, address)
 
 	// Start server (serving) by listening on port provided by server object's address
-	err := server.ListenAndServe()
+	err = server.ListenAndServe()
 
 	// output any error while serving from server
 	logger.Fatal(err)
