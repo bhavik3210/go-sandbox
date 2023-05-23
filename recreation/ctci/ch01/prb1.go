@@ -19,3 +19,9 @@ func IsUnique(str string) bool {
 	}
 	return result
 }
+
+func IsUniqueWithDataStructure(str string) bool {
+	result := false
+
+	return result
+}
