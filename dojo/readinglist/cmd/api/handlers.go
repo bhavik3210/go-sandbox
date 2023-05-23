@@ -4,26 +4,56 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
+	"time"
+
+	"readinglist.web.dojo/internal/data"
 )
 
-func (app *application) healthcheck(writer http.ResponseWriter, request *http.Request) {
-	if request.Method != http.MethodGet {
-		http.Error(writer, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
+func (app *application) healthcheck(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
 		return
 	}
 
-	fmt.Fprintln(writer, "status: available")
-	fmt.Fprintf(writer, "environment: %s\n", app.config.env)
-	fmt.Fprintf(writer, "version: %s\n", version)
-}
-
-func (app *application) getCreateBooksHandler(writer http.ResponseWriter, request *http.Request) {
-	if request.Method == http.MethodGet {
-		fmt.Fprintln(writer, "Dispaly a list of the book on the reading list")
+	data := map[string]string{
+		"status":      "available",
+		"environment": app.config.env,
+		"version":     version,
 	}
 
-	if request.Method == http.MethodPost {
-		fmt.Fprintln(writer, "Added a new book to the reading list")
+	if err := app.WriteJSON(w, http.StatusOK, envelope{"app": data}); err != nil {
+		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusMethodNotAllowed)
+		return
+	}
+}
+
+func (app *application) getCreateBooksHandler(w http.ResponseWriter, r *http.Request) {
+	data := []data.Book{
+		{
+			ID:        1,
+			CreatedAt: time.Now(),
+			Title:     "The Darkening of Tristram",
+			Published: 1998,
+			Pages:     300,
+			Genres:    []string{"Fiction", "Thriller"},
+			Rating:    4.5,
+			Version:   1,
+		},
+		{
+			ID:        2,
+			CreatedAt: time.Now(),
+			Title:     "The Legacy of Deckard Cain",
+			Published: 2007,
+			Pages:     300,
+			Genres:    []string{"Fiction", "Adventure"},
+			Rating:    4.9,
+			Version:   1,
+		},
+	}
+
+	if err := app.WriteJSON(w, http.StatusOK, envelope{"books": data}); err != nil {
+		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
+		return
 	}
 }
 
@@ -46,7 +76,21 @@ func (app *application) getBook(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		http.Error(w, "Bad Request", http.StatusBadRequest)
 	}
-	fmt.Fprintf(w, "Display the details of the book with ID: %d", idInt)
+	data := data.Book{
+		ID:        idInt,
+		CreatedAt: time.Now(),
+		Title:     "Echoes in the Darkness",
+		Published: 2019,
+		Pages:     300,
+		Genres:    []string{"Fiction", "Thriller"},
+		Rating:    4.5,
+		Version:   1,
+	}
+
+	if err := app.WriteJSON(w, http.StatusOK, envelope{"book": data}); err != nil {
+		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
+		return
+	}
 }
 
 func (app *application) updateBook(w http.ResponseWriter, r *http.Request) {
