@@ -16,11 +16,11 @@
         {
           "command": "workbench.action.terminal.sendSequence",
           "args": {
-            "text": "gostack && cd golang && nodemon -q --exec go run . -e go --signal SIGTERM \n"
+            "text": "nodemon -q --exec go run . -e go --signal SIGTERM \n"
           }
         },
         "workbench.action.focusActiveEditorGroup"
       ]
     },
-  },
+  }
 }

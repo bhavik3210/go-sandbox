@@ -21,7 +21,7 @@ func demoLoopWithBreaks() {
 }
 
 func demoLoopWithCondition() {
-	PrintTitle("LOOP WITH CODITIONS")
+	PrintTitle("LOOP WITH CONDITIONS")
 	i := 6
 	for i < 10 {
 		fmt.Println(i)
