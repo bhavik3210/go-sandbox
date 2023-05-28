@@ -8,7 +8,7 @@ func functionName(incoming values)(outgoing values if any){}
 */
 func DemoFunctions() {
 	demoParametersAndArguments()
-	demoFucntionWithMultipleReturnTypes()
+	demoFunctionWithMultipleReturnTypes()
 }
 
 func greet(name1 string, name2 string) {
@@ -17,13 +17,13 @@ func greet(name1 string, name2 string) {
 	fmt.Println(name2)
 }
 
-func conciesParamas(name1, name2 string) {
+func conciseParams(name1, name2 string) {
 	fmt.Print(name1)
 	fmt.Print(",")
 	fmt.Println(name2)
 }
 
-func variadicParamenters(names ...string) {
+func variadicParameters(names ...string) {
 	// names: are gathered as a slice, have to be the last of the parameters list
 	for i, n := range names {
 		fmt.Print(n)
@@ -35,9 +35,9 @@ func variadicParamenters(names ...string) {
 
 func demoParametersAndArguments() {
 	greet("name1", "name2")
-	conciesParamas("name1", "name2")
-	variadicParamenters()
-	variadicParamenters("name1", "name2", "name3", "name4", "nameN")
+	conciseParams("name1", "name2")
+	variadicParameters()
+	variadicParameters("name1", "name2", "name3", "name4", "nameN")
 }
 
 func divide(l, r int) (int, bool) {
@@ -47,7 +47,7 @@ func divide(l, r int) (int, bool) {
 	return l / r, true
 }
 
-func demoFucntionWithMultipleReturnTypes() {
+func demoFunctionWithMultipleReturnTypes() {
 	PrintTitle("Multiple Return Types/Values")
 	result, ok := divide(1, 2)
 	if ok {

@@ -13,9 +13,7 @@ func main() {
 	// basics.DemosForCollectionsInGoLang()
 	// basics.DemoLooping()
 	// basics.DemoBranching()
-	basics.DemoFunctions()
-	// in := bufio.NewReader(os.Stdin)
-	// inputText, _ := in.ReadString('\n')
-	// inputText = strings.TrimSpace(inputText)
-	// basics.PrintTitle(fmt.Sprint(inputText))
+	// basics.DemoFunctions()
+	// basics.DemoMethods()
+	basics.DemoInterfaces()
 }
