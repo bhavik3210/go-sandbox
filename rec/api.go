@@ -30,40 +30,40 @@ type List struct {
 	node *Node
 }
 
-func (list *List) delete(newNode *Node) {
-	if list.node == nil {
-		return
-	}
+// func (list *List) delete(newNode *Node) {
+// 	if list.node == nil {
+// 		return
+// 	}
 
-	pointerToFind := &newNode
-	fmt.Println(pointerToFind)
+// 	pointerToFind := &newNode
+// 	fmt.Println(pointerToFind)
 
-	prevNode := list.node
-	nextNode := prevNode.next
-	for {
-		if prevNode != nil {
-			fmt.Println(crrNode)
-			if pointerToFind == &crrNode {
-				fmt.Println(crrNode)
-				if crrNode.next != nil {
-					prevNode.next = crrNode.next
-				} else {
-					prevNode.next = nil
-				}
-				fmt.Println(crrNode)
-				break
-			} else {
-				prevNode = crrNode
-				crrNode = crrNode.next
-			}
-			break
-		} else {
-			fmt.Println(crrNode)
-		}
+// 	prevNode := list.node
+// 	nextNode := prevNode.next
+// 	for {
+// 		if prevNode != nil {
+// 			fmt.Println(crrNode)
+// 			if pointerToFind == &crrNode {
+// 				fmt.Println(crrNode)
+// 				if crrNode.next != nil {
+// 					prevNode.next = crrNode.next
+// 				} else {
+// 					prevNode.next = nil
+// 				}
+// 				fmt.Println(crrNode)
+// 				break
+// 			} else {
+// 				prevNode = crrNode
+// 				crrNode = crrNode.next
+// 			}
+// 			break
+// 		} else {
+// 			fmt.Println(crrNode)
+// 		}
 
-	}
+// 	}
 
-}
+// }
 
 func (list *List) insert(newNode *Node) {
 
@@ -114,7 +114,7 @@ func Demo() {
 	list.insert(&Node{4, nil})
 	list.insert(&Node{5, nil})
 
-	list.delete(node3)
+	// list.delete(node3)
 
 	list.print()
 }
