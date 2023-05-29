@@ -11,14 +11,17 @@ func demoBubbleSort() {
 	PrintTitle("BUBBLE SORT")
 	arr := []int{23, 1, 28, 50, 2, 5, 10}
 
-	fmt.Print("Unsorted Array:")
-	fmt.Println(arr)
+	fmt.Printf("Unsorted Array: %v", arr)
+	fmt.Println()
 
-	fmt.Print("Sorted Array:")
-	BubbleSort(arr)
+	BubbleSort(&arr)
+
+	fmt.Printf("Sorted Array: %v", arr)
+	fmt.Println()
 }
 
-func BubbleSort(arr []int) {
+func BubbleSort(array *[]int) {
+	arr := *array
 	for i := 0; i < len(arr)-1; i++ {
 
 		isSwapped := false
@@ -37,6 +40,4 @@ func BubbleSort(arr []int) {
 			break
 		}
 	}
-
-	fmt.Println(arr)
 }
