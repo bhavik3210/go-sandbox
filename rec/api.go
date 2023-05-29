@@ -38,18 +38,27 @@ func (list *List) delete(newNode *Node) {
 	pointerToFind := &newNode
 	fmt.Println(pointerToFind)
 
-	crrNode := list.node
+	prevNode := list.node
+	nextNode := prevNode.next
 	for {
-		if crrNode != nil {
+		if prevNode != nil {
+			fmt.Println(crrNode)
 			if pointerToFind == &crrNode {
-				// we found the node
+				fmt.Println(crrNode)
+				if crrNode.next != nil {
+					prevNode.next = crrNode.next
+				} else {
+					prevNode.next = nil
+				}
+				fmt.Println(crrNode)
 				break
 			} else {
+				prevNode = crrNode
 				crrNode = crrNode.next
 			}
-			fmt.Println(crrNode)
+			break
 		} else {
-
+			fmt.Println(crrNode)
 		}
 
 	}
