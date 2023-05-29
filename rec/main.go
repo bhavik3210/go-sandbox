@@ -8,6 +8,6 @@ func main() {
 	fmt.Println("------------------------------------")
 
 	fmt.Println()
-	Demo()
+	DemoSortingAlgo()
 	fmt.Println()
 }
