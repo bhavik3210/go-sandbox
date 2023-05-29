@@ -18,8 +18,42 @@ type Node struct {
 	next  *Node
 }
 
+func (node *Node) isTail() bool {
+	if node.next == nil {
+		return true
+	} else {
+		return false
+	}
+}
+
 type List struct {
 	node *Node
+}
+
+func (list *List) delete(newNode *Node) {
+	if list.node == nil {
+		return
+	}
+
+	pointerToFind := &newNode
+	fmt.Println(pointerToFind)
+
+	crrNode := list.node
+	for {
+		if crrNode != nil {
+			if pointerToFind == &crrNode {
+				// we found the node
+				break
+			} else {
+				crrNode = crrNode.next
+			}
+			fmt.Println(crrNode)
+		} else {
+
+		}
+
+	}
+
 }
 
 func (list *List) insert(newNode *Node) {
@@ -62,11 +96,16 @@ func (list *List) print() {
 
 func Demo() {
 	var list List
+
+	var node3 *Node = &Node{3, nil}
+
 	list.insert(&Node{1, nil})
 	list.insert(&Node{2, nil})
-	list.insert(&Node{3, nil})
+	list.insert(node3)
 	list.insert(&Node{4, nil})
 	list.insert(&Node{5, nil})
+
+	list.delete(node3)
 
 	list.print()
 }
