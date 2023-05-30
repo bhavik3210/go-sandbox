@@ -6,7 +6,7 @@ import (
 )
 
 func DemoSortingAlgo() {
-	utils.PrintHeader("DEMO SORTING ALGORITHMS")
+	utils.PrintHeader(" SORTING ALGORITHMS ")
 	sort.DemoBubbleSort()
 	sort.DemoInsertionSort()
 	sort.DemoSelectionSort()
