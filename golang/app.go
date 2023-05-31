@@ -15,5 +15,6 @@ func main() {
 	// basics.DemoBranching()
 	// basics.DemoFunctions()
 	// basics.DemoMethods()
-	basics.DemoInterfaces()
+	// basics.DemoInterfaces()
+	basics.DemoGenerics()
 }
