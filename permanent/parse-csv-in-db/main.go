@@ -2,12 +2,12 @@ package main
 
 import (
 	"encoding/csv"
-	"encoding/json"
 	"fmt"
 	"io"
 	"log"
 	"os"
 	"strconv"
+	"strings"
 )
 
 type Transaction struct {
@@ -50,7 +50,51 @@ func main() {
 			})
 	}
 
-	transactionsJson, _ := json.MarshalIndent(transactions, "", "")
-	fmt.Println(string(transactionsJson))
+	fmt.Printf("ALDI: %v \n", getTotalAmountSpent(transactions, "aldi"))
+	fmt.Printf("NETFIX: %v \n", getTotalAmountSpent(transactions, "netflix"))
+	fmt.Printf("YouTube Premium: %v \n", getTotalAmountSpent(transactions, "youtube"))
+	fmt.Printf("Apple: %v \n", getTotalAmountSpent(transactions, "apple"))
+	fmt.Printf("Harvest Time: %v \n", getTotalAmountSpent(transactions, "HARVESTIME"))
+	fmt.Printf("Spotify: %v \n", getTotalAmountSpent(transactions, "Spotify"))
+	fmt.Printf("Laundry: %v \n", getTotalAmountSpent(transactions, "OPS"))
 
+	//By category
+	fmt.Printf("Car Gas: %v \n", getTotalAmountSpentBasedOnCategory(transactions, "gas"))
+	fmt.Printf("Food: %v \n", getTotalAmountSpentBasedOnCategory(transactions, "food"))
+
+	// for _, v := range transactions {
+	// 	if strings.Contains(v.Description, "NETFLIX") {
+	// 		fmt.Printf("%s \n", v)
+	// 	}
+	// }
+
+	// fmt.Println()
+	// fmt.Println(len(transactions))
+
+	// transactionsJson, _ := json.MarshalIndent(transactions, "", "")
+	// fmt.Println(string(transactionsJson))
+
+}
+func getTotalAmountSpent(transactions []Transaction, substring string) float32 {
+	var total float32 = 0.0
+	for _, v := range transactions {
+		desc := strings.ToLower(v.Description)
+		match := strings.ToLower(substring)
+		if strings.Contains(desc, match) {
+			total += v.Amount
+		}
+	}
+	return total
+}
+
+func getTotalAmountSpentBasedOnCategory(transactions []Transaction, substring string) float32 {
+	var total float32 = 0.0
+	for _, v := range transactions {
+		desc := strings.ToLower(v.Category)
+		match := strings.ToLower(substring)
+		if strings.Contains(desc, match) {
+			total += v.Amount
+		}
+	}
+	return total
 }
